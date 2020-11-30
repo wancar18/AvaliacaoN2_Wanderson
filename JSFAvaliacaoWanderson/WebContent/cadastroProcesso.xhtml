@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Processos</title>
+</h:head>
+
+<h:body>
+	<h:form>
+	<h:commandLink value="Mostrar Processos" action="listaProcesso.xhtml" immediate="true" />
+		<h1>Cadastro de Processos</h1>
+		<h:messages />
+		<h:panelGrid columns="2">
+		
+			<h:outputText value="Número: *" />
+			<h:inputText value="#{processoControllerWanderson.proc.numeroProc}"
+				required="true"
+				requiredMessage="Favor Informar o numero do Processo!">
+				<f:validateLength maximum="20"/>
+				</h:inputText>
+
+				
+			<h:outputText value="Interessado: *" />
+			<h:inputText value="#{processoControllerWanderson.proc.interessado}"
+				required="true"
+				requiredMessage="Favor Informar o Interessado!" >
+				<f:validateLength maximum="30"/>
+				</h:inputText>
+				
+			<h:outputText value="Assunto: *" />
+			<h:inputText value="#{processoControllerWanderson.proc.assunto}"
+				required="true"
+				requiredMessage="Favor Informar o Assunto!" >
+				<f:validateLength maximum="20"/>
+				</h:inputText>
+			
+			<h:outputText value="Data da Autuação: *" />
+			<h:inputText value="#{processoControllerWanderson.proc.dataAut}"
+				required="true"
+				requiredMessage="Favor informar a data de Autuação!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>
+			
+			<h:outputText value="Valor do Processo: *" />
+			<h:inputText value="#{processoControllerWanderson.proc.valorProc}"
+				required="true"
+				requiredMessage="Favor Informar a placa do Carro" >
+				<f:validateDoubleRange minimum="1" maximum="50000"/>
+				</h:inputText>
+				
+
+			<h:commandButton value="Salvar" action="#{processoControllerWanderson.salvar}" />
+			<h:commandButton value="Limpar" action="cadastroProcesso.xhtml" 
+				actionListener="#{processoControllerWanderson.limparCampos}" immediate="true"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>

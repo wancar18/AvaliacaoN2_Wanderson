@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<h:head>
+	<title>Lista Processos</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:commandLink value="Cadastro de Processos"
+			action="cadastroProcesso.xhtml" immediate="true" />
+		<h1>Listagem de Processos</h1>
+
+		<h:messages />
+		<h:dataTable border="1" value="#{processoControllerWanderson.lista}"
+			var="proc">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText value="#{proc.id}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Numero" />
+				</f:facet>
+				<h:outputText value="#{proc.numeroProc}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Interessado" />
+				</f:facet>
+				<h:outputText value="#{proc.interessado}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Assunto" />
+				</f:facet>
+				<h:outputText value="#{proc.assunto}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Autuação" />
+				</f:facet>
+				<h:outputText value="#{proc.dataAut}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Desconto" />
+				</f:facet>
+				<h:outputText value="#{proc.desconto}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor Total" />
+				</f:facet>
+				<h:outputText value="#{proc.valorTotal}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ação" />
+				</f:facet>
+				<h:commandButton value="Editar"
+					action="#{processoControllerWanderson.editar}">
+					<f:setPropertyActionListener value="#{proc}"
+						target="#{processoControllerWanderson.proc}" />
+				</h:commandButton>
+				<h:commandButton value="Excluir"
+					action="#{processoControllerWanderson.excluir}"
+					onclick="return confirm('Deseja Excluir?')">
+					<f:setPropertyActionListener value="#{proc}"
+						target="#{processoControllerWanderson.proc}" />
+				</h:commandButton>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+</h:body>
+
+</html>
